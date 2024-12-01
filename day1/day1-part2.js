@@ -29,39 +29,23 @@ function dataToArray(input) {
 dataToArray(input);
 firstSet.sort();
 secondSet.sort();
-// console.log(firstSet.length);
-// console.log(firstSet);
 
-
-function getDifference(firstSet, secondSet) {
-    let difference = [];
-    let total = 0;
-    for (let i = 0; i < firstSet.length; i++) {
-        difference.push(Math.abs(firstSet[i] - secondSet[i]));
-    }
-    difference.forEach(num => {
-        total += num;
-        //console.log(total);
-    } );
-    return total;
-}
 
 function similarityScore(firstSet, secondSet) {
     const frequencies = [];
     let total = 0;
 
     for (let i = 0; i < firstSet.length; i++){
-        frequencies[i] = getFrequency(secondSet, firstSet[i]);
+        frequencies[i] = calculateFrequency(secondSet, firstSet[i]);
     }
     frequencies.forEach(num => {
         total += num;
     });
 
     return total;
-
 }
 
-function getFrequency(array, value) {
+function calculateFrequency(array, value) {
 
     return array.filter(item => item === value).length * value;
 

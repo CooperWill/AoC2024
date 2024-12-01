@@ -29,9 +29,6 @@ function dataToArray(input) {
 dataToArray(input);
 firstSet.sort();
 secondSet.sort();
-// console.log(firstSet.length);
-// console.log(firstSet);
-
 
 function getDifference(firstSet, secondSet) {
   let difference = [];
@@ -47,9 +44,3 @@ function getDifference(firstSet, secondSet) {
 }
 
 console.log(getDifference(firstSet, secondSet));
-
-
-
-//console.log(input)
-// console.log(dataToArray(input));
-// console.log(secondSet);

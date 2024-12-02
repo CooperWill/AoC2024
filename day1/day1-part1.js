@@ -20,8 +20,8 @@ function dataToArray(input) {
 
     lines.forEach(line => {
         const [num1, num2] = line.split(/\s+/).map(Number);
-        firstSet.push(num1); // Add the first number to the first array
-        secondSet.push(num2); // Add the second number to the second array
+        firstSet.push(num1);
+        secondSet.push(num2);
     });
 
 }

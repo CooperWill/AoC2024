@@ -14,6 +14,7 @@ function readFile(filePath) {
 readFile('./day2input.txt');
 
 
+
 const bigList = getData(input);
 
 function getData(numbers){
@@ -29,11 +30,13 @@ function getData(numbers){
 function confirmSafety(array){
     let safeZones = 0;
 
-     for(let i = 0; i < array.length; i++){
-         const subArray = array[i];
-         if(validateSubarray(subArray)){
-             safeZones += 1;
-         }
+    for(let i = 0; i < array.length; i++){
+        const subArray = array[i];
+        if(validateSubarray(subArray)){
+            safeZones += 1;
+        }else if(isSafeWithOneRemoval(subArray)){
+            safeZones += 1;
+        }
 
     }
 
@@ -69,6 +72,12 @@ function validateSubarray(subarray){ //checks to make sure the given subarray me
 
 }
 
+function isSafeWithOneRemoval(array) {
+    return array.some((_, yx) => {
+        const modifiedArray = array.slice(0, yx).concat(array.slice(yx + 1));
+        return validateSubarray(modifiedArray);
+    });
+}
 
 
 console.log(confirmSafety(bigList));

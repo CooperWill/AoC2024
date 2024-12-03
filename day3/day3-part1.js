@@ -31,7 +31,7 @@ function getData(numbers){
 }
 
 function trimFat(string){
-    return string.match(/mul\(\d+,\d+\)/g)?.join(" ") || "";
+    return string.match(/mul\(\d+,\d+\)|do\(\)|don't\(\)/g)?.join(" ") || "";
 
 }
 
@@ -44,12 +44,23 @@ function separateProblems(bigString){
 
 function doCalcs(array){
     let total = 0;
+    let safeFlag = true;
 
     let numbers = array[0].match(/\d+/g).map(Number);
 
     for(let i = 0; i < array.length; i++){
-        numbers = array[i].match(/\d+/g).map(Number);
-        total += (numbers[0] * numbers[1]);
+        if (array[i] === "do()"){
+            safeFlag = true;
+
+        }else if(array[i] === "don't()"){
+            safeFlag = false;
+
+
+        }else if(safeFlag){
+            numbers = array[i].match(/\d+/g).map(Number);
+            total += (numbers[0] * numbers[1]);
+        }
+
     }
 
     return total;
